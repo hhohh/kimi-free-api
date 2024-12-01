@@ -39,6 +39,6 @@ jobs:
         with:
           project: "hhohh-kimi-free-a-25"
           entrypoint: "https://deno.land/std@0.217.0/http/index.ts"
-          root: "out"
+          root: "dist"
           
           
