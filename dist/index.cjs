@@ -1,9 +1,33 @@
+"use strict";
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+
 // src/lib/environment.ts
-import path from "path";
-import fs from "fs-extra";
-import minimist from "minimist";
-import _ from "lodash";
-var cmdArgs = minimist(process.argv.slice(2));
+var import_path = __toESM(require("path"), 1);
+var import_fs_extra = __toESM(require("fs-extra"), 1);
+var import_minimist = __toESM(require("minimist"), 1);
+var import_lodash = __toESM(require("lodash"), 1);
+var cmdArgs = (0, import_minimist.default)(process.argv.slice(2));
 var envVars = process.env;
 var Environment = class {
   /** 命令行参数 */
@@ -24,7 +48,7 @@ var Environment = class {
     const { cmdArgs: cmdArgs2, envVars: envVars2, package: _package } = options;
     this.cmdArgs = cmdArgs2;
     this.envVars = envVars2;
-    this.env = _.defaultTo(cmdArgs2.env || envVars2.SERVER_ENV, "dev");
+    this.env = import_lodash.default.defaultTo(cmdArgs2.env || envVars2.SERVER_ENV, "dev");
     this.name = cmdArgs2.name || envVars2.SERVER_NAME || void 0;
     this.host = cmdArgs2.host || envVars2.SERVER_HOST || void 0;
     this.port = Number(cmdArgs2.port || envVars2.SERVER_PORT) ? Number(cmdArgs2.port || envVars2.SERVER_PORT) : void 0;
@@ -34,29 +58,29 @@ var Environment = class {
 var environment_default = new Environment({
   cmdArgs,
   envVars,
-  package: JSON.parse(fs.readFileSync(path.join(path.resolve(), "package.json")).toString())
+  package: JSON.parse(import_fs_extra.default.readFileSync(import_path.default.join(import_path.default.resolve(), "package.json")).toString())
 });
 
 // src/lib/configs/service-config.ts
-import path3 from "path";
-import fs3 from "fs-extra";
-import yaml from "yaml";
-import _3 from "lodash";
+var import_path3 = __toESM(require("path"), 1);
+var import_fs_extra3 = __toESM(require("fs-extra"), 1);
+var import_yaml = __toESM(require("yaml"), 1);
+var import_lodash3 = __toESM(require("lodash"), 1);
 
 // src/lib/util.ts
-import os from "os";
-import path2 from "path";
-import crypto from "crypto";
-import { Readable, Writable } from "stream";
-import "colors";
-import mime from "mime";
-import fs2 from "fs-extra";
-import { v1 as uuid } from "uuid";
-import { format as dateFormat } from "date-fns";
-import CRC32 from "crc-32";
-import randomstring from "randomstring";
-import _2 from "lodash";
-import { CronJob } from "cron";
+var import_os = __toESM(require("os"), 1);
+var import_path2 = __toESM(require("path"), 1);
+var import_crypto = __toESM(require("crypto"), 1);
+var import_stream = require("stream");
+var import_colors = require("colors");
+var import_mime = __toESM(require("mime"), 1);
+var import_fs_extra2 = __toESM(require("fs-extra"), 1);
+var import_uuid = require("uuid");
+var import_date_fns = require("date-fns");
+var import_crc_32 = __toESM(require("crc-32"), 1);
+var import_randomstring = __toESM(require("randomstring"), 1);
+var import_lodash2 = __toESM(require("lodash"), 1);
+var import_cron = require("cron");
 
 // src/lib/http-status-codes.ts
 var http_status_codes_default = {
@@ -172,9 +196,9 @@ var http_status_codes_default = {
 var autoIdMap = /* @__PURE__ */ new Map();
 var util = {
   is2DArrays(value) {
-    return _2.isArray(value) && (!value[0] || _2.isArray(value[0]) && _2.isArray(value[value.length - 1]));
+    return import_lodash2.default.isArray(value) && (!value[0] || import_lodash2.default.isArray(value[0]) && import_lodash2.default.isArray(value[value.length - 1]));
   },
-  uuid: (separator = true) => separator ? uuid() : uuid().replace(/\-/g, ""),
+  uuid: (separator = true) => separator ? (0, import_uuid.v1)() : (0, import_uuid.v1)().replace(/\-/g, ""),
   autoId: (prefix = "") => {
     let index = autoIdMap.get(prefix);
     if (index > 999999) index = 0;
@@ -182,13 +206,13 @@ var util = {
     return `${prefix}${index || 1}`;
   },
   ignoreJSONParse(value) {
-    const result = _2.attempt(() => JSON.parse(value));
-    if (_2.isError(result))
+    const result = import_lodash2.default.attempt(() => JSON.parse(value));
+    if (import_lodash2.default.isError(result))
       return null;
     return result;
   },
   generateRandomString(options) {
-    return randomstring.generate(options);
+    return import_randomstring.default.generate(options);
   },
   getResponseContentType(value) {
     return value.headers ? value.headers["content-type"] || value.headers["Content-Type"] : null;
@@ -204,24 +228,24 @@ var util = {
     return items.join("; ");
   },
   mimeToExtension(value) {
-    let extension = mime.getExtension(value);
+    let extension = import_mime.default.getExtension(value);
     if (extension == "mpga")
       return "mp3";
     return extension;
   },
   extractURLExtension(value) {
-    const extname = path2.extname(new URL(value).pathname);
+    const extname = import_path2.default.extname(new URL(value).pathname);
     return extname.substring(1).toLowerCase();
   },
   createCronJob(cronPatterns, callback) {
-    if (!_2.isFunction(callback)) throw new Error("callback must be an Function");
-    return new CronJob(cronPatterns, () => callback(), null, false, "Asia/Shanghai");
+    if (!import_lodash2.default.isFunction(callback)) throw new Error("callback must be an Function");
+    return new import_cron.CronJob(cronPatterns, () => callback(), null, false, "Asia/Shanghai");
   },
   getDateString(format = "yyyy-MM-dd", date = /* @__PURE__ */ new Date()) {
-    return dateFormat(date, format);
+    return (0, import_date_fns.format)(date, format);
   },
   getIPAddressesByIPv4() {
-    const interfaces = os.networkInterfaces();
+    const interfaces = import_os.default.networkInterfaces();
     const addresses = [];
     for (let name in interfaces) {
       const networks = interfaces[name];
@@ -232,7 +256,7 @@ var util = {
     return addresses;
   },
   getMACAddressesByIPv4() {
-    const interfaces = os.networkInterfaces();
+    const interfaces = import_os.default.networkInterfaces();
     const addresses = [];
     for (let name in interfaces) {
       const networks = interfaces[name];
@@ -253,31 +277,31 @@ retry: ${retry || 3e3}
     return `data:${type}/${ext.replace("jpg", "jpeg")};base64,${buffer.toString("base64")}`;
   },
   isLinux() {
-    return os.platform() !== "win32";
+    return import_os.default.platform() !== "win32";
   },
   isIPAddress(value) {
-    return _2.isString(value) && (/^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/.test(value) || /\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*/.test(value));
+    return import_lodash2.default.isString(value) && (/^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/.test(value) || /\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*/.test(value));
   },
   isPort(value) {
-    return _2.isNumber(value) && value > 0 && value < 65536;
+    return import_lodash2.default.isNumber(value) && value > 0 && value < 65536;
   },
   isReadStream(value) {
-    return value && (value instanceof Readable || "readable" in value || value.readable);
+    return value && (value instanceof import_stream.Readable || "readable" in value || value.readable);
   },
   isWriteStream(value) {
-    return value && (value instanceof Writable || "writable" in value || value.writable);
+    return value && (value instanceof import_stream.Writable || "writable" in value || value.writable);
   },
   isHttpStatusCode(value) {
-    return _2.isNumber(value) && Object.values(http_status_codes_default).includes(value);
+    return import_lodash2.default.isNumber(value) && Object.values(http_status_codes_default).includes(value);
   },
   isURL(value) {
-    return !_2.isUndefined(value) && /^(http|https)/.test(value);
+    return !import_lodash2.default.isUndefined(value) && /^(http|https)/.test(value);
   },
   isSrc(value) {
-    return !_2.isUndefined(value) && /^\/.+\.[0-9a-zA-Z]+(\?.+)?$/.test(value);
+    return !import_lodash2.default.isUndefined(value) && /^\/.+\.[0-9a-zA-Z]+(\?.+)?$/.test(value);
   },
   isBASE64(value) {
-    return !_2.isUndefined(value) && /^[a-zA-Z0-9\/\+]+(=?)+$/.test(value);
+    return !import_lodash2.default.isUndefined(value) && /^[a-zA-Z0-9\/\+]+(=?)+$/.test(value);
   },
   isBASE64Data(value) {
     return /^data:/.test(value);
@@ -294,7 +318,7 @@ retry: ${retry || 3e3}
     return /^(base64|json):/.test(value);
   },
   isStringNumber(value) {
-    return _2.isFinite(Number(value));
+    return import_lodash2.default.isFinite(Number(value));
   },
   isUnixTimestamp(value) {
     return /^[0-9]{10}$/.test(`${value}`);
@@ -310,7 +334,7 @@ retry: ${retry || 3e3}
   },
   async isAPNG(filePath) {
     let head;
-    const readStream = fs2.createReadStream(filePath, { start: 37, end: 40 });
+    const readStream = import_fs_extra2.default.createReadStream(filePath, { start: 37, end: 40 });
     const readPromise = new Promise((resolve, reject) => {
       readStream.once("end", resolve);
       readStream.once("error", reject);
@@ -332,7 +356,7 @@ retry: ${retry || 3e3}
     return url;
   },
   millisecondsToHmss(milliseconds) {
-    if (_2.isString(milliseconds)) return milliseconds;
+    if (import_lodash2.default.isString(milliseconds)) return milliseconds;
     milliseconds = parseInt(milliseconds);
     const sec = Math.floor(milliseconds / 1e3);
     const hours = Math.floor(sec / 3600);
@@ -356,13 +380,13 @@ retry: ${retry || 3e3}
     return [value >> 16 & 255, value >> 8 & 255, value & 255];
   },
   md5(value) {
-    return crypto.createHash("md5").update(value).digest("hex");
+    return import_crypto.default.createHash("md5").update(value).digest("hex");
   },
   crc32(value) {
-    return _2.isBuffer(value) ? CRC32.buf(value) : CRC32.str(value);
+    return import_lodash2.default.isBuffer(value) ? import_crc_32.default.buf(value) : import_crc_32.default.str(value);
   },
   arrayParse(value) {
-    return _2.isArray(value) ? value : [value];
+    return import_lodash2.default.isArray(value) ? value : [value];
   },
   booleanParse(value) {
     return value === "true" || value === true ? true : false;
@@ -377,7 +401,7 @@ retry: ${retry || 3e3}
 var util_default = util;
 
 // src/lib/configs/service-config.ts
-var CONFIG_PATH = path3.join(path3.resolve(), "configs/", environment_default.env, "/service.yml");
+var CONFIG_PATH = import_path3.default.join(import_path3.default.resolve(), "configs/", environment_default.env, "/service.yml");
 var ServiceConfig = class _ServiceConfig {
   /** 服务名称 */
   name;
@@ -391,10 +415,10 @@ var ServiceConfig = class _ServiceConfig {
   bindAddress;
   constructor(options) {
     const { name, host, port, urlPrefix, bindAddress } = options || {};
-    this.name = _3.defaultTo(name, "kimi-free-api");
-    this.host = _3.defaultTo(host, "0.0.0.0");
-    this.port = _3.defaultTo(port, 5566);
-    this.urlPrefix = _3.defaultTo(urlPrefix, "");
+    this.name = import_lodash3.default.defaultTo(name, "kimi-free-api");
+    this.host = import_lodash3.default.defaultTo(host, "0.0.0.0");
+    this.port = import_lodash3.default.defaultTo(port, 5566);
+    this.urlPrefix = import_lodash3.default.defaultTo(urlPrefix, "");
     this.bindAddress = bindAddress;
   }
   get addressHost() {
@@ -416,20 +440,20 @@ var ServiceConfig = class _ServiceConfig {
     return `http://127.0.0.1:${this.port}/public`;
   }
   static load() {
-    const external = _3.pickBy(environment_default, (v, k) => ["name", "host", "port"].includes(k) && !_3.isUndefined(v));
-    if (!fs3.pathExistsSync(CONFIG_PATH)) return new _ServiceConfig(external);
-    const data = yaml.parse(fs3.readFileSync(CONFIG_PATH).toString());
+    const external = import_lodash3.default.pickBy(environment_default, (v, k) => ["name", "host", "port"].includes(k) && !import_lodash3.default.isUndefined(v));
+    if (!import_fs_extra3.default.pathExistsSync(CONFIG_PATH)) return new _ServiceConfig(external);
+    const data = import_yaml.default.parse(import_fs_extra3.default.readFileSync(CONFIG_PATH).toString());
     return new _ServiceConfig({ ...data, ...external });
   }
 };
 var service_config_default = ServiceConfig.load();
 
 // src/lib/configs/system-config.ts
-import path4 from "path";
-import fs4 from "fs-extra";
-import yaml2 from "yaml";
-import _4 from "lodash";
-var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
+var import_path4 = __toESM(require("path"), 1);
+var import_fs_extra4 = __toESM(require("fs-extra"), 1);
+var import_yaml2 = __toESM(require("yaml"), 1);
+var import_lodash4 = __toESM(require("lodash"), 1);
+var CONFIG_PATH2 = import_path4.default.join(import_path4.default.resolve(), "configs/", environment_default.env, "/system.yml");
 var SystemConfig = class _SystemConfig {
   /** 是否开启请求日志 */
   requestLog;
@@ -451,13 +475,13 @@ var SystemConfig = class _SystemConfig {
   debug;
   constructor(options) {
     const { requestLog, tmpDir, logDir, logWriteInterval, logFileExpires, publicDir, tmpFileExpires, requestBody, debug } = options || {};
-    this.requestLog = _4.defaultTo(requestLog, false);
-    this.tmpDir = _4.defaultTo(tmpDir, "./tmp");
-    this.logDir = _4.defaultTo(logDir, "./logs");
-    this.logWriteInterval = _4.defaultTo(logWriteInterval, 200);
-    this.logFileExpires = _4.defaultTo(logFileExpires, 262656e4);
-    this.publicDir = _4.defaultTo(publicDir, "./public");
-    this.tmpFileExpires = _4.defaultTo(tmpFileExpires, 864e5);
+    this.requestLog = import_lodash4.default.defaultTo(requestLog, false);
+    this.tmpDir = import_lodash4.default.defaultTo(tmpDir, "./tmp");
+    this.logDir = import_lodash4.default.defaultTo(logDir, "./logs");
+    this.logWriteInterval = import_lodash4.default.defaultTo(logWriteInterval, 200);
+    this.logFileExpires = import_lodash4.default.defaultTo(logFileExpires, 262656e4);
+    this.publicDir = import_lodash4.default.defaultTo(publicDir, "./public");
+    this.tmpFileExpires = import_lodash4.default.defaultTo(tmpFileExpires, 864e5);
     this.requestBody = Object.assign(requestBody || {}, {
       enableTypes: ["json", "form", "text", "xml"],
       encoding: "utf-8",
@@ -471,23 +495,23 @@ var SystemConfig = class _SystemConfig {
       multipart: true,
       parsedMethods: ["POST", "PUT", "PATCH"]
     });
-    this.debug = _4.defaultTo(debug, true);
+    this.debug = import_lodash4.default.defaultTo(debug, true);
   }
   get rootDirPath() {
-    return path4.resolve();
+    return import_path4.default.resolve();
   }
   get tmpDirPath() {
-    return path4.resolve(this.tmpDir);
+    return import_path4.default.resolve(this.tmpDir);
   }
   get logDirPath() {
-    return path4.resolve(this.logDir);
+    return import_path4.default.resolve(this.logDir);
   }
   get publicDirPath() {
-    return path4.resolve(this.publicDir);
+    return import_path4.default.resolve(this.publicDir);
   }
   static load() {
-    if (!fs4.pathExistsSync(CONFIG_PATH2)) return new _SystemConfig();
-    const data = yaml2.parse(fs4.readFileSync(CONFIG_PATH2).toString());
+    if (!import_fs_extra4.default.pathExistsSync(CONFIG_PATH2)) return new _SystemConfig();
+    const data = import_yaml2.default.parse(import_fs_extra4.default.readFileSync(CONFIG_PATH2).toString());
     return new _SystemConfig(data);
   }
 };
@@ -503,17 +527,17 @@ var Config = class {
 var config_default = new Config();
 
 // src/lib/logger.ts
-import path5 from "path";
-import _util from "util";
-import "colors";
-import _5 from "lodash";
-import fs5 from "fs-extra";
-import { format as dateFormat2 } from "date-fns";
+var import_path5 = __toESM(require("path"), 1);
+var import_util2 = __toESM(require("util"), 1);
+var import_colors2 = require("colors");
+var import_lodash5 = __toESM(require("lodash"), 1);
+var import_fs_extra5 = __toESM(require("fs-extra"), 1);
+var import_date_fns2 = require("date-fns");
 var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
   #buffers = [];
   constructor() {
-    !isVercelEnv && fs5.ensureDirSync(config_default.system.logDirPath);
+    !isVercelEnv && import_fs_extra5.default.ensureDirSync(config_default.system.logDirPath);
     !isVercelEnv && this.work();
   }
   push(content) {
@@ -521,14 +545,14 @@ var LogWriter = class {
     this.#buffers.push(buffer);
   }
   writeSync(buffer) {
-    !isVercelEnv && fs5.appendFileSync(path5.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), buffer);
+    !isVercelEnv && import_fs_extra5.default.appendFileSync(import_path5.default.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), buffer);
   }
   async write(buffer) {
-    !isVercelEnv && await fs5.appendFile(path5.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), buffer);
+    !isVercelEnv && await import_fs_extra5.default.appendFile(import_path5.default.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), buffer);
   }
   flush() {
     if (!this.#buffers.length) return;
-    !isVercelEnv && fs5.appendFileSync(path5.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), Buffer.concat(this.#buffers));
+    !isVercelEnv && import_fs_extra5.default.appendFileSync(import_path5.default.join(config_default.system.logDirPath, `/${util_default.getDateString()}.log`), Buffer.concat(this.#buffers));
   }
   work() {
     if (!this.#buffers.length) return setTimeout(this.work.bind(this), config_default.system.logWriteInterval);
@@ -548,7 +572,7 @@ var LogText = class {
   time = /* @__PURE__ */ new Date();
   constructor(level, ...params) {
     this.level = level;
-    this.text = _util.format.apply(null, params);
+    this.text = import_util2.default.format.apply(null, params);
     this.source = this.#getStackTopCodeInfo();
   }
   #getStackTopCodeInfo() {
@@ -558,7 +582,7 @@ var LogText = class {
     if (!text)
       return unknownInfo;
     const match = text.match(/at (.+) \((.+)\)/) || text.match(/at (.+)/);
-    if (!match || !_5.isString(match[2] || match[1]))
+    if (!match || !import_lodash5.default.isString(match[2] || match[1]))
       return unknownInfo;
     const temp = match[2] || match[1];
     const _match = temp.match(/([a-zA-Z0-9_\-\.]+)\:(\d+)\:(\d+)$/);
@@ -573,7 +597,7 @@ var LogText = class {
     };
   }
   toString() {
-    return `[${dateFormat2(this.time, "yyyy-MM-dd HH:mm:ss.SSS")}][${this.level}][${this.source.name}<${this.source.codeLine},${this.source.codeColumn}>] ${this.text}`;
+    return `[${(0, import_date_fns2.format)(this.time, "yyyy-MM-dd HH:mm:ss.SSS")}][${this.level}][${this.source.name}<${this.source.codeLine},${this.source.codeColumn}>] ${this.text}`;
   }
 };
 var Logger = class _Logger {
@@ -605,7 +629,7 @@ var Logger = class _Logger {
   header() {
     this.#writer.writeSync(Buffer.from(`
 
-===================== LOG START ${dateFormat2(/* @__PURE__ */ new Date(), "yyyy-MM-dd HH:mm:ss.SSS")} =====================
+===================== LOG START ${(0, import_date_fns2.format)(/* @__PURE__ */ new Date(), "yyyy-MM-dd HH:mm:ss.SSS")} =====================
 
 `));
   }
@@ -613,7 +637,7 @@ var Logger = class _Logger {
     this.#writer.flush();
     this.#writer.writeSync(Buffer.from(`
 
-===================== LOG END ${dateFormat2(/* @__PURE__ */ new Date(), "yyyy-MM-dd HH:mm:ss.SSS")} =====================
+===================== LOG END ${(0, import_date_fns2.format)(/* @__PURE__ */ new Date(), "yyyy-MM-dd HH:mm:ss.SSS")} =====================
 
 `));
   }
@@ -681,19 +705,19 @@ process.on("SIGINT", () => {
 });
 
 // src/lib/server.ts
-import Koa from "koa";
-import KoaRouter from "koa-router";
-import koaRange from "koa-range";
-import koaCors from "koa2-cors";
-import koaBody from "koa-body";
-import _11 from "lodash";
+var import_koa = __toESM(require("koa"), 1);
+var import_koa_router = __toESM(require("koa-router"), 1);
+var import_koa_range = __toESM(require("koa-range"), 1);
+var import_koa2_cors = __toESM(require("koa2-cors"), 1);
+var import_koa_body = __toESM(require("koa-body"), 1);
+var import_lodash11 = __toESM(require("lodash"), 1);
 
 // src/lib/request/Request.ts
-import _7 from "lodash";
+var import_lodash7 = __toESM(require("lodash"), 1);
 
 // src/lib/exceptions/Exception.ts
-import assert from "assert";
-import _6 from "lodash";
+var import_assert = __toESM(require("assert"), 1);
+var import_lodash6 = __toESM(require("lodash"), 1);
 var Exception = class extends Error {
   /** 错误码 */
   errcode;
@@ -710,10 +734,10 @@ var Exception = class extends Error {
    * @param _errmsg 异常消息
    */
   constructor(exception, _errmsg) {
-    assert(_6.isArray(exception), "Exception must be Array");
+    (0, import_assert.default)(import_lodash6.default.isArray(exception), "Exception must be Array");
     const [errcode, errmsg] = exception;
-    assert(_6.isFinite(errcode), "Exception errcode invalid");
-    assert(_6.isString(errmsg), "Exception errmsg invalid");
+    (0, import_assert.default)(import_lodash6.default.isFinite(errcode), "Exception errcode invalid");
+    (0, import_assert.default)(import_lodash6.default.isString(errmsg), "Exception errmsg invalid");
     super(_errmsg || errmsg);
     this.errcode = errcode;
     this.errmsg = _errmsg || errmsg;
@@ -727,7 +751,7 @@ var Exception = class extends Error {
     return this;
   }
   setData(value) {
-    this.data = _6.defaultTo(value, null);
+    this.data = import_lodash6.default.defaultTo(value, null);
     return this;
   }
 };
@@ -794,15 +818,15 @@ var Request = class {
     this.body = ctx.request.body || {};
     this.files = ctx.request.files || {};
     this.remoteIP = this.headers["X-Real-IP"] || this.headers["x-real-ip"] || this.headers["X-Forwarded-For"] || this.headers["x-forwarded-for"] || ctx.ip || null;
-    this.time = Number(_7.defaultTo(time, util_default.timestamp()));
+    this.time = Number(import_lodash7.default.defaultTo(time, util_default.timestamp()));
   }
   validate(key, fn) {
     try {
-      const value = _7.get(this, key);
+      const value = import_lodash7.default.get(this, key);
       if (fn) {
         if (fn(value) === false)
           throw `[Mismatch] -> ${fn}`;
-      } else if (_7.isUndefined(value))
+      } else if (import_lodash7.default.isUndefined(value))
         throw "[Undefined]";
     } catch (err) {
       logger_default.warn(`Params ${key} invalid:`, err);
@@ -813,11 +837,11 @@ var Request = class {
 };
 
 // src/lib/response/Response.ts
-import mime2 from "mime";
-import _9 from "lodash";
+var import_mime2 = __toESM(require("mime"), 1);
+var import_lodash9 = __toESM(require("lodash"), 1);
 
 // src/lib/response/Body.ts
-import _8 from "lodash";
+var import_lodash8 = __toESM(require("lodash"), 1);
 var Body = class _Body {
   /** 状态码 */
   code;
@@ -829,10 +853,10 @@ var Body = class _Body {
   statusCode;
   constructor(options = {}) {
     const { code, message, data, statusCode } = options;
-    this.code = Number(_8.defaultTo(code, 0));
-    this.message = _8.defaultTo(message, "OK");
-    this.data = _8.defaultTo(data, null);
-    this.statusCode = Number(_8.defaultTo(statusCode, 200));
+    this.code = Number(import_lodash8.default.defaultTo(code, 0));
+    this.message = import_lodash8.default.defaultTo(message, "OK");
+    this.data = import_lodash8.default.defaultTo(data, null);
+    this.statusCode = Number(import_lodash8.default.defaultTo(statusCode, 200));
   }
   toObject() {
     return {
@@ -864,18 +888,18 @@ var Response = class _Response {
   time;
   constructor(body, options = {}) {
     const { statusCode, type, headers, redirect, size, time } = options;
-    this.statusCode = Number(_9.defaultTo(statusCode, Body.isInstance(body) ? body.statusCode : void 0));
+    this.statusCode = Number(import_lodash9.default.defaultTo(statusCode, Body.isInstance(body) ? body.statusCode : void 0));
     this.type = type;
     this.headers = headers;
     this.redirect = redirect;
     this.size = size;
-    this.time = Number(_9.defaultTo(time, util_default.timestamp()));
+    this.time = Number(import_lodash9.default.defaultTo(time, util_default.timestamp()));
     this.body = body;
   }
   injectTo(ctx) {
     this.redirect && ctx.redirect(this.redirect);
     this.statusCode && (ctx.status = this.statusCode);
-    this.type && (ctx.type = mime2.getType(this.type) || this.type);
+    this.type && (ctx.type = import_mime2.default.getType(this.type) || this.type);
     const headers = this.headers || {};
     if (this.size && !headers["Content-Length"] && !headers["content-length"])
       headers["Content-Length"] = this.size;
@@ -891,7 +915,7 @@ var Response = class _Response {
 };
 
 // src/lib/response/FailureBody.ts
-import _10 from "lodash";
+var import_lodash10 = __toESM(require("lodash"), 1);
 
 // src/lib/consts/exceptions.ts
 var exceptions_default2 = {
@@ -905,11 +929,11 @@ var FailureBody = class _FailureBody extends Body {
   constructor(error, _data) {
     let errcode, errmsg, data = _data, httpStatusCode = http_status_codes_default.OK;
     ;
-    if (_10.isString(error))
+    if (import_lodash10.default.isString(error))
       error = new Exception(exceptions_default2.SYSTEM_ERROR, error);
     else if (error instanceof APIException || error instanceof Exception)
       ({ errcode, errmsg, data, httpStatusCode } = error);
-    else if (_10.isError(error))
+    else if (import_lodash10.default.isError(error))
       ({ errcode, errmsg, data, httpStatusCode } = new Exception(exceptions_default2.SYSTEM_ERROR, error.message));
     super({
       code: errcode || -1,
@@ -928,10 +952,10 @@ var Server = class {
   app;
   router;
   constructor() {
-    this.app = new Koa();
-    this.app.use(koaCors());
-    this.app.use(koaRange);
-    this.router = new KoaRouter({ prefix: config_default.service.urlPrefix });
+    this.app = new import_koa.default();
+    this.app.use((0, import_koa2_cors.default)());
+    this.app.use(import_koa_range.default);
+    this.router = new import_koa_router.default({ prefix: config_default.service.urlPrefix });
     this.app.use(async (ctx, next) => {
       if (ctx.request.type === "application/xml" || ctx.request.type === "application/ssml+xml")
         ctx.req.headers["content-type"] = "text/xml";
@@ -943,7 +967,7 @@ var Server = class {
         new Response(failureBody).injectTo(ctx);
       }
     });
-    this.app.use(koaBody(_11.clone(config_default.system.requestBody)));
+    this.app.use((0, import_koa_body.default)(import_lodash11.default.clone(config_default.system.requestBody)));
     this.app.on("error", (err) => {
       if (["ECONNRESET", "ECONNABORTED", "EPIPE", "ECANCELED"].includes(err.code)) return;
       logger_default.error(err);
@@ -960,7 +984,7 @@ var Server = class {
       const prefix = route.prefix || "";
       for (let method in route) {
         if (method === "prefix") continue;
-        if (!_11.isObject(route[method])) {
+        if (!import_lodash11.default.isObject(route[method])) {
           logger_default.warn(`Router ${prefix} ${method} invalid`);
           continue;
         }
@@ -1067,18 +1091,18 @@ var Server = class {
 var server_default = new Server();
 
 // src/api/routes/index.ts
-import fs6 from "fs-extra";
+var import_fs_extra6 = __toESM(require("fs-extra"), 1);
 
 // src/api/routes/chat.ts
-import _13 from "lodash";
+var import_lodash13 = __toESM(require("lodash"), 1);
 
 // src/api/controllers/chat.ts
-import { PassThrough } from "stream";
-import path6 from "path";
-import _12 from "lodash";
-import mime3 from "mime";
-import axios from "axios";
-import { createParser } from "eventsource-parser";
+var import_stream2 = require("stream");
+var import_path6 = __toESM(require("path"), 1);
+var import_lodash12 = __toESM(require("lodash"), 1);
+var import_mime3 = __toESM(require("mime"), 1);
+var import_axios = __toESM(require("axios"), 1);
+var import_eventsource_parser = require("eventsource-parser");
 var MODEL_NAME = "kimi";
 var ACCESS_TOKEN_EXPIRES = 300;
 var MAX_RETRY_COUNT = 3;
@@ -1107,7 +1131,7 @@ async function requestToken(refreshToken) {
   accessTokenRequestQueueMap[refreshToken] = [];
   logger_default.info(`Refresh token: ${refreshToken}`);
   const result = await (async () => {
-    const result2 = await axios.get("https://kimi.moonshot.cn/api/auth/token/refresh", {
+    const result2 = await import_axios.default.get("https://kimi.moonshot.cn/api/auth/token/refresh", {
       headers: {
         Accept: "*/*",
         "Accept-Encoding": "gzip, deflate, br, zstd",
@@ -1153,7 +1177,7 @@ async function requestToken(refreshToken) {
     }
     return err;
   });
-  if (_12.isError(result))
+  if (import_lodash12.default.isError(result))
     throw result;
   return result;
 }
@@ -1170,7 +1194,7 @@ async function acquireToken(refreshToken) {
   return result;
 }
 async function getUserInfo(accessToken, refreshToken) {
-  const result = await axios.get("https://kimi.moonshot.cn/api/user", {
+  const result = await import_axios.default.get("https://kimi.moonshot.cn/api/user", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       Referer: "https://kimi.moonshot.cn/",
@@ -1188,7 +1212,7 @@ async function createConversation(model, name, refreshToken) {
     accessToken,
     userId
   } = await acquireToken(refreshToken);
-  const result = await axios.post("https://kimi.moonshot.cn/api/chat", {
+  const result = await import_axios.default.post("https://kimi.moonshot.cn/api/chat", {
     born_from: "",
     is_example: false,
     kimiplus_id: /^[0-9a-z]{20}$/.test(model) ? model : "kimi",
@@ -1214,7 +1238,7 @@ async function removeConversation(convId, refreshToken) {
     accessToken,
     userId
   } = await acquireToken(refreshToken);
-  const result = await axios.delete(`https://kimi.moonshot.cn/api/chat/${convId}`, {
+  const result = await import_axios.default.delete(`https://kimi.moonshot.cn/api/chat/${convId}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       Referer: `https://kimi.moonshot.cn/chat/${convId}`,
@@ -1232,7 +1256,7 @@ async function promptSnippetSubmit(query, refreshToken) {
     accessToken,
     userId
   } = await acquireToken(refreshToken);
-  const result = await axios.post("https://kimi.moonshot.cn/api/prompt-snippet/instance", {
+  const result = await import_axios.default.post("https://kimi.moonshot.cn/api/prompt-snippet/instance", {
     "offset": 0,
     "size": 10,
     "query": query.replace("user:", "").replace("assistant:", "")
@@ -1261,7 +1285,7 @@ async function createCompletion(model = MODEL_NAME, messages, refreshToken, useS
       userId
     } = await acquireToken(refreshToken);
     const sendMessages = messagesPrepare(messages, !!refConvId);
-    const result = await axios.post(`https://kimi.moonshot.cn/api/chat/${convId}/completion/stream`, {
+    const result = await import_axios.default.post(`https://kimi.moonshot.cn/api/chat/${convId}/completion/stream`, {
       kimiplus_id: /^[0-9a-z]{20}$/.test(model) ? model : "kimi",
       messages: sendMessages,
       refs,
@@ -1311,7 +1335,7 @@ async function createCompletionStream(model = MODEL_NAME, messages, refreshToken
       userId
     } = await acquireToken(refreshToken);
     const sendMessages = messagesPrepare(messages, !!refConvId);
-    const result = await axios.post(`https://kimi.moonshot.cn/api/chat/${convId}/completion/stream`, {
+    const result = await import_axios.default.post(`https://kimi.moonshot.cn/api/chat/${convId}/completion/stream`, {
       kimiplus_id: /^[0-9a-z]{20}$/.test(model) ? model : void 0,
       messages: sendMessages,
       refs,
@@ -1363,13 +1387,13 @@ async function fakeRequest(refreshToken) {
     }
   };
   await [
-    () => axios.get("https://kimi.moonshot.cn/api/user", options),
-    () => axios.get("https://kimi.moonshot.cn/api/chat_1m/user/status", options),
-    () => axios.post("https://kimi.moonshot.cn/api/chat/list", {
+    () => import_axios.default.get("https://kimi.moonshot.cn/api/user", options),
+    () => import_axios.default.get("https://kimi.moonshot.cn/api/chat_1m/user/status", options),
+    () => import_axios.default.post("https://kimi.moonshot.cn/api/chat/list", {
       offset: 0,
       size: 50
     }, options),
-    () => axios.post("https://kimi.moonshot.cn/api/show_case/list", {
+    () => import_axios.default.post("https://kimi.moonshot.cn/api/show_case/list", {
       offset: 0,
       size: 4,
       enable_cache: true,
@@ -1383,13 +1407,13 @@ function extractRefFileUrls(messages) {
     return urls;
   }
   const lastMessage = messages[messages.length - 1];
-  if (_12.isArray(lastMessage.content)) {
+  if (import_lodash12.default.isArray(lastMessage.content)) {
     lastMessage.content.forEach((v) => {
-      if (!_12.isObject(v) || !["file", "image_url"].includes(v["type"]))
+      if (!import_lodash12.default.isObject(v) || !["file", "image_url"].includes(v["type"]))
         return;
-      if (v["type"] == "file" && _12.isObject(v["file_url"]) && _12.isString(v["file_url"]["url"]))
+      if (v["type"] == "file" && import_lodash12.default.isObject(v["file_url"]) && import_lodash12.default.isString(v["file_url"]["url"]))
         urls.push(v["file_url"]["url"]);
-      else if (v["type"] == "image_url" && _12.isObject(v["image_url"]) && _12.isString(v["image_url"]["url"]))
+      else if (v["type"] == "image_url" && import_lodash12.default.isObject(v["image_url"]) && import_lodash12.default.isString(v["image_url"]["url"]))
         urls.push(v["image_url"]["url"]);
     });
   }
@@ -1400,9 +1424,9 @@ function messagesPrepare(messages, isRefConv = false) {
   let content;
   if (isRefConv || messages.length < 2) {
     content = messages.reduce((content2, message) => {
-      if (_12.isArray(message.content)) {
+      if (import_lodash12.default.isArray(message.content)) {
         return message.content.reduce((_content, v) => {
-          if (!_12.isObject(v) || v["type"] != "text") return _content;
+          if (!import_lodash12.default.isObject(v) || v["type"] != "text") return _content;
           return _content + `${v["text"] || ""}
 `;
         }, content2);
@@ -1430,9 +1454,9 @@ function messagesPrepare(messages, isRefConv = false) {
       logger_default.info("\u6CE8\u5165\u63D0\u5347\u5C3E\u90E8\u6D88\u606F\u6CE8\u610F\u529Bsystem prompt");
     }
     content = messages.reduce((content2, message) => {
-      if (_12.isArray(message.content)) {
+      if (import_lodash12.default.isArray(message.content)) {
         return message.content.reduce((_content, v) => {
-          if (!_12.isObject(v) || v["type"] != "text") return _content;
+          if (!import_lodash12.default.isObject(v) || v["type"] != "text") return _content;
           return _content + `${message.role || "user"}:${v["text"] || ""}
 `;
         }, content2);
@@ -1454,7 +1478,7 @@ async function preSignUrl(filename, refreshToken) {
     accessToken,
     userId
   } = await acquireToken(refreshToken);
-  const result = await axios.post("https://kimi.moonshot.cn/api/pre-sign-url", {
+  const result = await import_axios.default.post("https://kimi.moonshot.cn/api/pre-sign-url", {
     action: "file",
     name: filename
   }, {
@@ -1473,7 +1497,7 @@ async function preSignUrl(filename, refreshToken) {
 async function checkFileUrl(fileUrl) {
   if (util_default.isBASE64Data(fileUrl))
     return;
-  const result = await axios.head(fileUrl, {
+  const result = await import_axios.default.head(fileUrl, {
     timeout: 15e3,
     validateStatus: () => true
   });
@@ -1490,12 +1514,12 @@ async function uploadFile(fileUrl, refreshToken) {
   let filename, fileData, mimeType;
   if (util_default.isBASE64Data(fileUrl)) {
     mimeType = util_default.extractBASE64DataFormat(fileUrl);
-    const ext = mime3.getExtension(mimeType);
+    const ext = import_mime3.default.getExtension(mimeType);
     filename = `${util_default.uuid()}.${ext}`;
     fileData = Buffer.from(util_default.removeBASE64DataHeader(fileUrl), "base64");
   } else {
-    filename = path6.basename(fileUrl);
-    ({ data: fileData } = await axios.get(fileUrl, {
+    filename = import_path6.default.basename(fileUrl);
+    ({ data: fileData } = await import_axios.default.get(fileUrl, {
       responseType: "arraybuffer",
       // 100M限制
       maxContentLength: FILE_MAX_SIZE,
@@ -1507,12 +1531,12 @@ async function uploadFile(fileUrl, refreshToken) {
     url: uploadUrl,
     object_name: objectName
   } = await preSignUrl(filename, refreshToken);
-  mimeType = mimeType || mime3.getType(filename);
+  mimeType = mimeType || import_mime3.default.getType(filename);
   const {
     accessToken,
     userId
   } = await acquireToken(refreshToken);
-  let result = await axios.request({
+  let result = await import_axios.default.request({
     method: "PUT",
     url: uploadUrl,
     data: fileData,
@@ -1535,7 +1559,7 @@ async function uploadFile(fileUrl, refreshToken) {
   while (status != "initialized") {
     if (Date.now() - startTime > 3e4)
       throw new Error("\u6587\u4EF6\u7B49\u5F85\u5904\u7406\u8D85\u65F6");
-    result = await axios.post("https://kimi.moonshot.cn/api/file", {
+    result = await import_axios.default.post("https://kimi.moonshot.cn/api/file", {
       type: "file",
       name: filename,
       object_name: objectName,
@@ -1557,7 +1581,7 @@ async function uploadFile(fileUrl, refreshToken) {
     if (Date.now() - startTime > 3e4)
       throw new Error("\u6587\u4EF6\u7B49\u5F85\u5904\u7406\u8D85\u65F6");
     parseFinish = await new Promise((resolve) => {
-      axios.post("https://kimi.moonshot.cn/api/file/parse_process", {
+      import_axios.default.post("https://kimi.moonshot.cn/api/file/parse_process", {
         ids: [fileId],
         timeout: 12e4
       }, {
@@ -1581,7 +1605,7 @@ function checkResult(result, refreshToken) {
   if (!result.data)
     return null;
   const { error_type, message } = result.data;
-  if (!_12.isString(error_type))
+  if (!import_lodash12.default.isString(error_type))
     return result.data;
   if (error_type == "auth.token.invalid")
     accessTokenMap.delete(refreshToken);
@@ -1604,11 +1628,11 @@ async function receiveStream(model, convId, stream) {
     };
     let refContent = "";
     const silentSearch = model.indexOf("silent_search") != -1;
-    const parser = createParser((event) => {
+    const parser = (0, import_eventsource_parser.createParser)((event) => {
       try {
         if (event.type !== "event") return;
-        const result = _12.attempt(() => JSON.parse(event.data));
-        if (_12.isError(result))
+        const result = import_lodash12.default.attempt(() => JSON.parse(event.data));
+        if (import_lodash12.default.isError(result))
           throw new Error(`Stream response invalid: ${event.data}`);
         if (result.event == "cmpl" && result.text) {
           const exceptCharIndex = result.text.indexOf("\uFFFD");
@@ -1638,7 +1662,7 @@ ${refContent}` : "");
 }
 function createTransStream(model, convId, stream, endCallback) {
   const created = util_default.unixTimestamp();
-  const transStream = new PassThrough();
+  const transStream = new import_stream2.PassThrough();
   let webSearchCount = 0;
   let searchFlag = false;
   const silentSearch = model.indexOf("silent_search") != -1;
@@ -1653,11 +1677,11 @@ function createTransStream(model, convId, stream, endCallback) {
   })}
 
 `);
-  const parser = createParser((event) => {
+  const parser = (0, import_eventsource_parser.createParser)((event) => {
     try {
       if (event.type !== "event") return;
-      const result = _12.attempt(() => JSON.parse(event.data));
-      if (_12.isError(result))
+      const result = import_lodash12.default.attempt(() => JSON.parse(event.data));
+      if (import_lodash12.default.isError(result))
         throw new Error(`Stream response invalid: ${event.data}`);
       if (result.event == "cmpl") {
         const exceptCharIndex = result.text.indexOf("\uFFFD");
@@ -1736,7 +1760,7 @@ function tokenSplit(authorization) {
   return authorization.replace("Bearer ", "").split(",");
 }
 async function getTokenLiveStatus(refreshToken) {
-  const result = await axios.get("https://kimi.moonshot.cn/api/auth/token/refresh", {
+  const result = await import_axios.default.get("https://kimi.moonshot.cn/api/auth/token/refresh", {
     headers: {
       Authorization: `Bearer ${refreshToken}`,
       Referer: "https://kimi.moonshot.cn/",
@@ -1768,9 +1792,9 @@ var chat_default2 = {
   prefix: "/v1/chat",
   post: {
     "/completions": async (request) => {
-      request.validate("body.conversation_id", (v) => _13.isUndefined(v) || _13.isString(v)).validate("body.messages", _13.isArray).validate("headers.authorization", _13.isString);
+      request.validate("body.conversation_id", (v) => import_lodash13.default.isUndefined(v) || import_lodash13.default.isString(v)).validate("body.messages", import_lodash13.default.isArray).validate("headers.authorization", import_lodash13.default.isString);
       const tokens = chat_default.tokenSplit(request.headers.authorization);
-      const token = _13.sample(tokens);
+      const token = import_lodash13.default.sample(tokens);
       const { model, conversation_id: convId, messages, stream, use_search } = request.body;
       if (stream) {
         const stream2 = await chat_default.createCompletionStream(model, messages, token, use_search, convId);
@@ -1792,12 +1816,12 @@ var ping_default = {
 };
 
 // src/api/routes/token.ts
-import _14 from "lodash";
+var import_lodash14 = __toESM(require("lodash"), 1);
 var token_default = {
   prefix: "/token",
   post: {
     "/check": async (request) => {
-      request.validate("body.token", _14.isString);
+      request.validate("body.token", import_lodash14.default.isString);
       const live = await chat_default.getTokenLiveStatus(request.body.token);
       return {
         live
@@ -1849,7 +1873,7 @@ var routes_default = [
   {
     get: {
       "/": async () => {
-        const content = await fs6.readFile("public/welcome.html");
+        const content = await import_fs_extra6.default.readFile("public/welcome.html");
         return new Response(content, {
           type: "html",
           headers: {
@@ -1882,4 +1906,4 @@ var startupTime = performance.now();
     `Service startup completed (${Math.floor(performance.now() - startupTime)}ms)`
   )
 ).catch((err) => console.error(err));
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.cjs.map
