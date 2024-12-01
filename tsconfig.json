@@ -9,7 +9,7 @@
       "paths": {
         "@/*": ["src/*"]
       },
-      "outDir": "./dist"
+      "outDir": "./"
     },
     "include": ["src/**/*", "libs.d.ts"],
     "exclude": ["node_modules", "dist"]
