@@ -39,6 +39,6 @@ jobs:
         with:
           project: "hhohh-kimi-free-a-25"
           entrypoint: "index.js"
-          root: "./dist/"
+          root: ""
           
           
