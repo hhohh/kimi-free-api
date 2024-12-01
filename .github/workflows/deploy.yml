@@ -38,7 +38,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "hhohh-kimi-free-a-25"
-          entrypoint: "./dist/index.js"
-          root: ""
+          entrypoint: "/index.js"
+          root: "dist/"
           
           
