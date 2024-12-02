@@ -1,0 +1,6 @@
+#!/bin/bash
+npm config set registry https://registry.npmmirror.com 
+npm i
+npm i -g pm2
+npm run build
+pm2 start dist/index.js --name "kimi-free-api"
