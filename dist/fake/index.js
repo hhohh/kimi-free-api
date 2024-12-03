@@ -1,7 +1,7 @@
 // src/lib/environment.ts
 import path from "node:path";
 import fs from "npm:fs-extra";
-import minimist from "node:minimist";
+import minimist from "npm:minimist";
 import _ from "node:lodash";
 var cmdArgs = minimist(process.argv.slice(2));
 var envVars = process.env;
