@@ -1867,7 +1867,6 @@ var routes_default = [
 ];
 
 // src/index.ts
-import process from "node:process";
 var startupTime = performance.now();
 (async () => {
   logger_default.header();
