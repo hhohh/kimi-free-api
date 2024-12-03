@@ -1,8 +1,8 @@
 // src/lib/environment.ts
-import path from "path";
-import fs from "fs-extra";
-import minimist from "minimist";
-import _ from "lodash";
+import path from "node:path";
+import fs from "node:fs-extra";
+import minimist from "node:minimist";
+import _ from "node:lodash";
 var cmdArgs = minimist(process.argv.slice(2));
 var envVars = process.env;
 var Environment = class {
@@ -38,25 +38,25 @@ var environment_default = new Environment({
 });
 
 // src/lib/configs/service-config.ts
-import path3 from "path";
-import fs3 from "fs-extra";
-import yaml from "yaml";
-import _3 from "lodash";
+import path3 from "node:path";
+import fs3 from "node:fs-extra";
+import yaml from "node:yaml";
+import _3 from "node:lodash";
 
 // src/lib/util.ts
-import os from "os";
-import path2 from "path";
-import crypto from "crypto";
-import { Readable, Writable } from "stream";
+import os from "node:os";
+import path2 from "node:path";
+import crypto from "node:crypto";
+import { Readable, Writable } from "node:stream";
 import "colors";
-import mime from "mime";
-import fs2 from "fs-extra";
-import { v1 as uuid } from "uuid";
-import { format as dateFormat } from "date-fns";
-import CRC32 from "crc-32";
-import randomstring from "randomstring";
-import _2 from "lodash";
-import { CronJob } from "cron";
+import mime from "node:mime";
+import fs2 from "node:fs-extra";
+import { v1 as uuid } from "node:uuid";
+import { format as dateFormat } from "node:date-fns";
+import CRC32 from "node:crc-32";
+import randomstring from "node:randomstring";
+import _2 from "node:lodash";
+import { CronJob } from "node:cron";
 
 // src/lib/http-status-codes.ts
 var http_status_codes_default = {
@@ -425,10 +425,10 @@ var ServiceConfig = class _ServiceConfig {
 var service_config_default = ServiceConfig.load();
 
 // src/lib/configs/system-config.ts
-import path4 from "path";
-import fs4 from "fs-extra";
-import yaml2 from "yaml";
-import _4 from "lodash";
+import path4 from "node:path";
+import fs4 from "node:fs-extra";
+import yaml2 from "node:yaml";
+import _4 from "node:lodash";
 var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
 var SystemConfig = class _SystemConfig {
   /** 是否开启请求日志 */
@@ -503,12 +503,12 @@ var Config = class {
 var config_default = new Config();
 
 // src/lib/logger.ts
-import path5 from "path";
-import _util from "util";
+import path5 from "node:path";
+import _util from "node:util";
 import "colors";
-import _5 from "lodash";
-import fs5 from "fs-extra";
-import { format as dateFormat2 } from "date-fns";
+import _5 from "node:lodash";
+import fs5 from "node:fs-extra";
+import { format as dateFormat2 } from "node:date-fns";
 var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
   #buffers = [];
@@ -681,19 +681,19 @@ process.on("SIGINT", () => {
 });
 
 // src/lib/server.ts
-import Koa from "koa";
-import KoaRouter from "koa-router";
-import koaRange from "koa-range";
-import koaCors from "koa2-cors";
-import koaBody from "koa-body";
-import _11 from "lodash";
+import Koa from "node:koa";
+import KoaRouter from "node:koa-router";
+import koaRange from "node:koa-range";
+import koaCors from "node:koa2-cors";
+import koaBody from "node:koa-body";
+import _11 from "node:lodash";
 
 // src/lib/request/Request.ts
-import _7 from "lodash";
+import _7 from "node:lodash";
 
 // src/lib/exceptions/Exception.ts
-import assert from "assert";
-import _6 from "lodash";
+import assert from "node:assert";
+import _6 from "node:lodash";
 var Exception = class extends Error {
   /** 错误码 */
   errcode;
@@ -813,11 +813,11 @@ var Request = class {
 };
 
 // src/lib/response/Response.ts
-import mime2 from "mime";
-import _9 from "lodash";
+import mime2 from "node:mime";
+import _9 from "node:lodash";
 
 // src/lib/response/Body.ts
-import _8 from "lodash";
+import _8 from "node:lodash";
 var Body = class _Body {
   /** 状态码 */
   code;
@@ -891,7 +891,7 @@ var Response = class _Response {
 };
 
 // src/lib/response/FailureBody.ts
-import _10 from "lodash";
+import _10 from "node:lodash";
 
 // src/lib/consts/exceptions.ts
 var exceptions_default2 = {
@@ -1067,18 +1067,18 @@ var Server = class {
 var server_default = new Server();
 
 // src/api/routes/index.ts
-import fs6 from "fs-extra";
+import fs6 from "node:fs-extra";
 
 // src/api/routes/chat.ts
-import _13 from "lodash";
+import _13 from "node:lodash";
 
 // src/api/controllers/chat.ts
-import { PassThrough } from "stream";
-import path6 from "path";
-import _12 from "lodash";
-import mime3 from "mime";
-import axios from "axios";
-import { createParser } from "eventsource-parser";
+import { PassThrough } from "node:stream";
+import path6 from "node:path";
+import _12 from "node:lodash";
+import mime3 from "node:mime";
+import axios from "node:axios";
+import { createParser } from "node:eventsource-parser";
 var MODEL_NAME = "kimi";
 var ACCESS_TOKEN_EXPIRES = 300;
 var MAX_RETRY_COUNT = 3;
@@ -1792,7 +1792,7 @@ var ping_default = {
 };
 
 // src/api/routes/token.ts
-import _14 from "lodash";
+import _14 from "node:lodash";
 var token_default = {
   prefix: "/token",
   post: {
