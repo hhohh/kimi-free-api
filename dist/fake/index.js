@@ -1077,7 +1077,7 @@ import { PassThrough } from "node:stream";
 import path6 from "node:path";
 import _12 from "npm:lodash";
 import mime3 from "npm:mime";
-import axios from "node:axios";
+import axios from "npm:axios";
 import { createParser } from "node:eventsource-parser";
 var MODEL_NAME = "kimi";
 var ACCESS_TOKEN_EXPIRES = 300;
