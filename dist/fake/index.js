@@ -2,7 +2,7 @@
 import path from "node:path";
 import fs from "npm:fs-extra";
 import minimist from "npm:minimist";
-import _ from "node:lodash";
+import _ from "npm:lodash";
 var cmdArgs = minimist(process.argv.slice(2));
 var envVars = process.env;
 var Environment = class {
@@ -41,7 +41,7 @@ var environment_default = new Environment({
 import path3 from "node:path";
 import fs3 from "npm:fs-extra";
 import yaml from "node:yaml";
-import _3 from "node:lodash";
+import _3 from "npm:lodash";
 
 // src/lib/util.ts
 import os from "node:os";
@@ -55,7 +55,7 @@ import { v1 as uuid } from "node:uuid";
 import { format as dateFormat } from "node:date-fns";
 import CRC32 from "node:crc-32";
 import randomstring from "node:randomstring";
-import _2 from "node:lodash";
+import _2 from "npm:lodash";
 import { CronJob } from "node:cron";
 
 // src/lib/http-status-codes.ts
@@ -428,7 +428,7 @@ var service_config_default = ServiceConfig.load();
 import path4 from "node:path";
 import fs4 from "npm:fs-extra";
 import yaml2 from "node:yaml";
-import _4 from "node:lodash";
+import _4 from "npm:lodash";
 var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
 var SystemConfig = class _SystemConfig {
   /** 是否开启请求日志 */
@@ -506,7 +506,7 @@ var config_default = new Config();
 import path5 from "node:path";
 import _util from "node:util";
 import "colors";
-import _5 from "node:lodash";
+import _5 from "npm:lodash";
 import fs5 from "npm:fs-extra";
 import { format as dateFormat2 } from "node:date-fns";
 var isVercelEnv = process.env.VERCEL;
@@ -686,14 +686,14 @@ import KoaRouter from "node:koa-router";
 import koaRange from "node:koa-range";
 import koaCors from "node:koa2-cors";
 import koaBody from "node:koa-body";
-import _11 from "node:lodash";
+import _11 from "npm:lodash";
 
 // src/lib/request/Request.ts
-import _7 from "node:lodash";
+import _7 from "npm:lodash";
 
 // src/lib/exceptions/Exception.ts
 import assert from "node:assert";
-import _6 from "node:lodash";
+import _6 from "npm:lodash";
 var Exception = class extends Error {
   /** 错误码 */
   errcode;
@@ -814,10 +814,10 @@ var Request = class {
 
 // src/lib/response/Response.ts
 import mime2 from "node:mime";
-import _9 from "node:lodash";
+import _9 from "npm:lodash";
 
 // src/lib/response/Body.ts
-import _8 from "node:lodash";
+import _8 from "npm:lodash";
 var Body = class _Body {
   /** 状态码 */
   code;
@@ -891,7 +891,7 @@ var Response = class _Response {
 };
 
 // src/lib/response/FailureBody.ts
-import _10 from "node:lodash";
+import _10 from "npm:lodash";
 
 // src/lib/consts/exceptions.ts
 var exceptions_default2 = {
@@ -1070,12 +1070,12 @@ var server_default = new Server();
 import fs6 from "npm:fs-extra";
 
 // src/api/routes/chat.ts
-import _13 from "node:lodash";
+import _13 from "npm:lodash";
 
 // src/api/controllers/chat.ts
 import { PassThrough } from "node:stream";
 import path6 from "node:path";
-import _12 from "node:lodash";
+import _12 from "npm:lodash";
 import mime3 from "node:mime";
 import axios from "node:axios";
 import { createParser } from "node:eventsource-parser";
@@ -1792,7 +1792,7 @@ var ping_default = {
 };
 
 // src/api/routes/token.ts
-import _14 from "node:lodash";
+import _14 from "npm:lodash";
 var token_default = {
   prefix: "/token",
   post: {
