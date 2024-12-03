@@ -51,7 +51,7 @@ import { Readable, Writable } from "node:stream";
 import "colors";
 import mime from "npm:mime";
 import fs2 from "npm:fs-extra";
-import { v1 as uuid } from "npm: uuid";
+import { v1 as uuid } from "npm:uuid";
 import { format as dateFormat } from "node:date-fns";
 import CRC32 from "node:crc-32";
 import randomstring from "node:randomstring";
