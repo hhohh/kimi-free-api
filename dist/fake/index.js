@@ -681,11 +681,11 @@ process.on("SIGINT", () => {
 });
 
 // src/lib/server.ts
-import Koa from "node:koa";
-import KoaRouter from "node:koa-router";
-import koaRange from "node:koa-range";
-import koaCors from "node:koa2-cors";
-import koaBody from "node:koa-body";
+import Koa from "npm:koa";
+import KoaRouter from "npm:koa-router";
+import koaRange from "npm:koa-range";
+import koaCors from "npm:koa2-cors";
+import koaBody from "npm:koa-body";
 import _11 from "npm:lodash";
 
 // src/lib/request/Request.ts
