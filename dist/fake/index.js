@@ -1,6 +1,6 @@
 // src/lib/environment.ts
 import path from "node:path";
-import fs from "node:fs-extra";
+import fs from "npm:fs-extra";
 import minimist from "node:minimist";
 import _ from "node:lodash";
 var cmdArgs = minimist(process.argv.slice(2));
@@ -39,7 +39,7 @@ var environment_default = new Environment({
 
 // src/lib/configs/service-config.ts
 import path3 from "node:path";
-import fs3 from "node:fs-extra";
+import fs3 from "npm:fs-extra";
 import yaml from "node:yaml";
 import _3 from "node:lodash";
 
@@ -50,7 +50,7 @@ import crypto from "node:crypto";
 import { Readable, Writable } from "node:stream";
 import "colors";
 import mime from "node:mime";
-import fs2 from "node:fs-extra";
+import fs2 from "npm:fs-extra";
 import { v1 as uuid } from "node:uuid";
 import { format as dateFormat } from "node:date-fns";
 import CRC32 from "node:crc-32";
@@ -426,7 +426,7 @@ var service_config_default = ServiceConfig.load();
 
 // src/lib/configs/system-config.ts
 import path4 from "node:path";
-import fs4 from "node:fs-extra";
+import fs4 from "npm:fs-extra";
 import yaml2 from "node:yaml";
 import _4 from "node:lodash";
 var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
@@ -507,7 +507,7 @@ import path5 from "node:path";
 import _util from "node:util";
 import "colors";
 import _5 from "node:lodash";
-import fs5 from "node:fs-extra";
+import fs5 from "npm:fs-extra";
 import { format as dateFormat2 } from "node:date-fns";
 var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
@@ -1067,7 +1067,7 @@ var Server = class {
 var server_default = new Server();
 
 // src/api/routes/index.ts
-import fs6 from "node:fs-extra";
+import fs6 from "npm:fs-extra";
 
 // src/api/routes/chat.ts
 import _13 from "node:lodash";
