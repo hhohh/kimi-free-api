@@ -49,7 +49,7 @@ import path2 from "node:path";
 import crypto from "node:crypto";
 import { Readable, Writable } from "node:stream";
 import "colors";
-import mime from "node:mime";
+import mime from "npm:mime";
 import fs2 from "npm:fs-extra";
 import { v1 as uuid } from "node:uuid";
 import { format as dateFormat } from "node:date-fns";
@@ -813,7 +813,7 @@ var Request = class {
 };
 
 // src/lib/response/Response.ts
-import mime2 from "node:mime";
+import mime2 from "npm:mime";
 import _9 from "npm:lodash";
 
 // src/lib/response/Body.ts
@@ -1076,7 +1076,7 @@ import _13 from "npm:lodash";
 import { PassThrough } from "node:stream";
 import path6 from "node:path";
 import _12 from "npm:lodash";
-import mime3 from "node:mime";
+import mime3 from "npm:mime";
 import axios from "node:axios";
 import { createParser } from "node:eventsource-parser";
 var MODEL_NAME = "kimi";
