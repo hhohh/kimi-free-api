@@ -54,7 +54,7 @@ import fs2 from "npm:fs-extra";
 import { v1 as uuid } from "npm:uuid";
 import { format as dateFormat } from "npm:date-fns";
 import CRC32 from "npm:crc-32";
-import randomstring from "node:randomstring";
+import randomstring from "npm:randomstring";
 import _2 from "npm:lodash";
 import { CronJob } from "node:cron";
 
