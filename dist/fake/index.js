@@ -1073,7 +1073,7 @@ import fs6 from "npm:fs-extra";
 import _13 from "npm:lodash";
 
 // src/api/controllers/chat.ts
-import { PassThrough } from "npm:stream";
+import { PassThrough } from "node:stream";
 import path6 from "node:path";
 import _12 from "npm:lodash";
 import mime3 from "npm:mime";
