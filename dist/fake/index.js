@@ -660,6 +660,7 @@ var Logger = class _Logger {
 var logger_default = new Logger();
 
 // src/lib/initialize.ts
+import process from "node:process";
 process.setMaxListeners(Infinity);
 process.on("uncaughtException", (err, origin) => {
   logger_default.error(`An unhandled error occurred: ${origin}`, err);
@@ -1866,6 +1867,7 @@ var routes_default = [
 ];
 
 // src/index.ts
+import process from "node:process";
 var startupTime = performance.now();
 (async () => {
   logger_default.header();
