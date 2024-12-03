@@ -46,7 +46,7 @@ import _3 from "npm:lodash";
 // src/lib/util.ts
 import os from "node:os";
 import path2 from "node:path";
-import crypto from "node:crypto-js";
+import crypto from "npm:crypto-js";
 import { Readable, Writable } from "npm:stream";
 import "colors";
 import mime from "npm:mime";
