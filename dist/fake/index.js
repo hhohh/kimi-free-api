@@ -47,7 +47,7 @@ import _3 from "npm:lodash";
 import os from "node:os";
 import path2 from "node:path";
 import crypto from "npm:crypto-js";
-import { Readable, Writable } from "npm:stream";
+import { Readable, Writable } from "node:stream";
 import "colors";
 import mime from "npm:mime";
 import fs2 from "npm:fs-extra";
