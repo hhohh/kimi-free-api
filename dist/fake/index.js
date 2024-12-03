@@ -1,5 +1,5 @@
 // src/lib/environment.ts
-import path from "npm:path";
+import path from "node:path";
 import fs from "npm:fs-extra";
 import minimist from "npm:minimist";
 import _ from "npm:lodash";
@@ -38,15 +38,15 @@ var environment_default = new Environment({
 });
 
 // src/lib/configs/service-config.ts
-import path3 from "npm:path";
+import path3 from "node:path";
 import fs3 from "npm:fs-extra";
 import yaml from "npm:yaml";
 import _3 from "npm:lodash";
 
 // src/lib/util.ts
-import os from "npm:os";
-import path2 from "npm:path";
-import crypto from "npm:crypto";
+import os from "node:os";
+import path2 from "node:path";
+import crypto from "node:crypto";
 import { Readable, Writable } from "npm:stream";
 import "colors";
 import mime from "npm:mime";
@@ -425,7 +425,7 @@ var ServiceConfig = class _ServiceConfig {
 var service_config_default = ServiceConfig.load();
 
 // src/lib/configs/system-config.ts
-import path4 from "npm:path";
+import path4 from "node:path";
 import fs4 from "npm:fs-extra";
 import yaml2 from "npm:yaml";
 import _4 from "npm:lodash";
@@ -503,7 +503,7 @@ var Config = class {
 var config_default = new Config();
 
 // src/lib/logger.ts
-import path5 from "npm:path";
+import path5 from "node:path";
 import _util from "npm:util";
 import "colors";
 import _5 from "npm:lodash";
@@ -1074,7 +1074,7 @@ import _13 from "npm:lodash";
 
 // src/api/controllers/chat.ts
 import { PassThrough } from "npm:stream";
-import path6 from "npm:path";
+import path6 from "node:path";
 import _12 from "npm:lodash";
 import mime3 from "npm:mime";
 import axios from "npm:axios";
