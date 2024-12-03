@@ -52,7 +52,7 @@ import "colors";
 import mime from "npm:mime";
 import fs2 from "npm:fs-extra";
 import { v1 as uuid } from "npm:uuid";
-import { format as dateFormat } from "node:date-fns";
+import { format as dateFormat } from "npm:date-fns";
 import CRC32 from "node:crc-32";
 import randomstring from "node:randomstring";
 import _2 from "npm:lodash";
@@ -508,7 +508,7 @@ import _util from "node:util";
 import "colors";
 import _5 from "npm:lodash";
 import fs5 from "npm:fs-extra";
-import { format as dateFormat2 } from "node:date-fns";
+import { format as dateFormat2 } from "npm:date-fns";
 var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
   #buffers = [];
