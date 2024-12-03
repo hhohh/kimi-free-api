@@ -40,7 +40,7 @@ var environment_default = new Environment({
 // src/lib/configs/service-config.ts
 import path3 from "node:path";
 import fs3 from "npm:fs-extra";
-import yaml from "node:yaml";
+import yaml from "npm:yaml";
 import _3 from "npm:lodash";
 
 // src/lib/util.ts
@@ -427,7 +427,7 @@ var service_config_default = ServiceConfig.load();
 // src/lib/configs/system-config.ts
 import path4 from "node:path";
 import fs4 from "npm:fs-extra";
-import yaml2 from "node:yaml";
+import yaml2 from "npm:yaml";
 import _4 from "npm:lodash";
 var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
 var SystemConfig = class _SystemConfig {
