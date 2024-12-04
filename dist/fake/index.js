@@ -687,7 +687,7 @@ import Koa from "npm:koa";
 import KoaRouter from "npm:koa-router";
 import koaRange from "npm:koa-range";
 import koaCors from "npm:koa2-cors";
-import koaBody from "npm:koa-body";
+import koaBody from "npm:koa-body@5.0.0";
 import _11 from "npm:lodash";
 
 // src/lib/request/Request.ts
