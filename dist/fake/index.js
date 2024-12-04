@@ -549,7 +549,8 @@ var LogText = class {
   /** @type {Date} 日志发生时间 */
   time = /* @__PURE__ */ new Date();
   constructor(level, ...params) {
-    this.level = level;
+    // this.level = level;
+    this.level = "debug";
     this.text = _util.format.apply(null, params);
     this.source = this.#getStackTopCodeInfo();
   }
