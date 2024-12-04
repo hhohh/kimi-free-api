@@ -1,4 +1,5 @@
 // src/lib/environment.ts
+import Buffer from "node:Buffer";
 import path from "node:path";
 import fs from "npm:fs-extra";
 import minimist from "npm:minimist";
