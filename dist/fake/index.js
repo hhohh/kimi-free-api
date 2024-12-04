@@ -2,8 +2,8 @@
 import Buffer from "npm:Buffer";
 import path from "node:path";
 import fs from "npm:fs-extra";
-import minimist from "npm:minimist";
-import _ from "npm:lodash";
+import minimist from "npm:minimist@1.2.8";
+import _ from "npm:lodash@4.17.21";
 var cmdArgs = minimist(process.argv.slice(2));
 var envVars = process.env;
 var Environment = class {
@@ -41,8 +41,8 @@ var environment_default = new Environment({
 // src/lib/configs/service-config.ts
 import path3 from "node:path";
 import fs3 from "npm:fs-extra";
-import yaml from "npm:yaml";
-import _3 from "npm:lodash";
+import yaml from "npm:yaml@2.3.4";
+import _3 from "npm:lodash@4.17.21";
 
 // src/lib/util.ts
 import os from "node:os";
@@ -50,14 +50,14 @@ import path2 from "node:path";
 import crypto from "npm:crypto-js";
 import { Readable, Writable } from "node:stream";
 import "colors";
-import mime from "npm:mime";
+import mime from "npm:mime@4.0.1";
 import fs2 from "npm:fs-extra";
-import { v1 as uuid } from "npm:uuid";
-import { format as dateFormat } from "npm:date-fns";
-import CRC32 from "npm:crc-32";
-import randomstring from "npm:randomstring";
-import _2 from "npm:lodash";
-import { CronJob } from "npm:cron";
+import { v1 as uuid } from "npm:uuid@9.0.1";
+import { format as dateFormat } from "npm:date-fns@3.3.1";
+import CRC32 from "npm:crc-32@1.2.2";
+import randomstring from "npm:randomstring@1.3.0";
+import _2 from "npm:lodash@4.17.21";
+import { CronJob } from "npm:cron@3.1.6";
 
 // src/lib/http-status-codes.ts
 var http_status_codes_default = {
@@ -428,8 +428,8 @@ var service_config_default = ServiceConfig.load();
 // src/lib/configs/system-config.ts
 import path4 from "node:path";
 import fs4 from "npm:fs-extra";
-import yaml2 from "npm:yaml";
-import _4 from "npm:lodash";
+import yaml2 from "npm:yaml@2.3.4";
+import _4 from "npm:lodash@4.17.21";
 var CONFIG_PATH2 = path4.join(path4.resolve(), "configs/", environment_default.env, "/system.yml");
 var SystemConfig = class _SystemConfig {
   /** 是否开启请求日志 */
@@ -508,9 +508,9 @@ var config_default = new Config();
 import path5 from "node:path";
 import _util from "npm:util";
 import "colors";
-import _5 from "npm:lodash";
+import _5 from "npm:lodash@4.17.21";
 import fs5 from "npm:fs-extra";
-import { format as dateFormat2 } from "npm:date-fns";
+import { format as dateFormat2 } from "npm:date-fns@3.3.1";
 var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
   #buffers = [];
@@ -684,19 +684,19 @@ process.on("SIGINT", () => {
 });
 
 // src/lib/server.ts
-import Koa from "npm:koa";
-import KoaRouter from "npm:koa-router";
-import koaRange from "npm:koa-range";
-import koaCors from "npm:koa2-cors";
+import Koa from "npm:koa@2.15.0";
+import KoaRouter from "npm:koa-router@12.0.1";
+import koaRange from "npm:koa-range@0.3.0";
+import koaCors from "npm:koa2-cors@2.0.6";
 import koaBody from "npm:koa-body@5.0.0";
-import _11 from "npm:lodash";
+import _11 from "npm:lodash@4.17.21";
 
 // src/lib/request/Request.ts
-import _7 from "npm:lodash";
+import _7 from "npm:lodash@4.17.21";
 
 // src/lib/exceptions/Exception.ts
 import assert from "npm:assert";
-import _6 from "npm:lodash";
+import _6 from "npm:lodash@4.17.21";
 var Exception = class extends Error {
   /** 错误码 */
   errcode;
@@ -816,11 +816,11 @@ var Request = class {
 };
 
 // src/lib/response/Response.ts
-import mime2 from "npm:mime";
-import _9 from "npm:lodash";
+import mime2 from "npm:mime@4.0.1";
+import _9 from "npm:lodash@4.17.21";
 
 // src/lib/response/Body.ts
-import _8 from "npm:lodash";
+import _8 from "npm:lodash@4.17.21";
 var Body = class _Body {
   /** 状态码 */
   code;
@@ -894,7 +894,7 @@ var Response = class _Response {
 };
 
 // src/lib/response/FailureBody.ts
-import _10 from "npm:lodash";
+import _10 from "npm:lodash@4.17.21";
 
 // src/lib/consts/exceptions.ts
 var exceptions_default2 = {
@@ -1073,14 +1073,14 @@ var server_default = new Server();
 import fs6 from "npm:fs-extra";
 
 // src/api/routes/chat.ts
-import _13 from "npm:lodash";
+import _13 from "npm:lodash@4.17.21";
 
 // src/api/controllers/chat.ts
 import { PassThrough } from "node:stream";
 import path6 from "node:path";
-import _12 from "npm:lodash";
-import mime3 from "npm:mime";
-import axios from "npm:axios";
+import _12 from "npm:lodash@4.17.21";
+import mime3 from "npm:mime@4.0.1";
+import axios from "npm:axios@1.6.7";
 import { createParser } from "npm:eventsource-parser";
 var MODEL_NAME = "kimi";
 var ACCESS_TOKEN_EXPIRES = 300;
@@ -1795,7 +1795,7 @@ var ping_default = {
 };
 
 // src/api/routes/token.ts
-import _14 from "npm:lodash";
+import _14 from "npm:lodash@4.17.21";
 var token_default = {
   prefix: "/token",
   post: {
