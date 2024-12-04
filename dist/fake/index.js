@@ -452,7 +452,7 @@ var SystemConfig = class _SystemConfig {
   debug;
   constructor(options) {
     const { requestLog, tmpDir, logDir, logWriteInterval, logFileExpires, publicDir, tmpFileExpires, requestBody, debug } = options || {};
-    this.requestLog = _4.defaultTo(requestLog, false);
+    this.requestLog = _4.defaultTo(requestLog, true);
     this.tmpDir = _4.defaultTo(tmpDir, "./tmp");
     this.logDir = _4.defaultTo(logDir, "./logs");
     this.logWriteInterval = _4.defaultTo(logWriteInterval, 200);
@@ -549,8 +549,7 @@ var LogText = class {
   /** @type {Date} 日志发生时间 */
   time = /* @__PURE__ */ new Date();
   constructor(level, ...params) {
-    // this.level = level;
-    this.level = "debug";
+    this.level = level;
     this.text = _util.format.apply(null, params);
     this.source = this.#getStackTopCodeInfo();
   }
