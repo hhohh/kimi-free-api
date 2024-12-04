@@ -449,7 +449,7 @@ var SystemConfig = class _SystemConfig {
   /** 请求体配置 */
   requestBody;
   /** 是否调试模式 */
-  debug : true;
+  debug:true;
   constructor(options) {
     const { requestLog, tmpDir, logDir, logWriteInterval, logFileExpires, publicDir, tmpFileExpires, requestBody, debug } = options || {};
     this.requestLog = _4.defaultTo(requestLog, false);
