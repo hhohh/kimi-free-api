@@ -513,7 +513,7 @@ var isVercelEnv = process.env.VERCEL;
 var LogWriter = class {
   #buffers = [];
   constructor() {
-    !isVercelEnv && fs5.ensureDirSync(config_default.system.logDirPath);
+    // !isVercelEnv && fs5.ensureDirSync(config_default.system.logDirPath);
     !isVercelEnv && this.work();
   }
   push(content) {
