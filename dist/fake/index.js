@@ -876,6 +876,7 @@ var Response = class _Response {
     this.body = body;
   }
   injectTo(ctx) {
+    logger_default.info(this.body)
     this.redirect && ctx.redirect(this.redirect);
     this.statusCode && (ctx.status = this.statusCode);
     this.type && (ctx.type = mime2.getType(this.type) || this.type);
