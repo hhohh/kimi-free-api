@@ -449,7 +449,7 @@ var SystemConfig = class _SystemConfig {
   /** 请求体配置 */
   requestBody;
   /** 是否调试模式 */
-  debug:true;
+  debug;
   constructor(options) {
     const { requestLog, tmpDir, logDir, logWriteInterval, logFileExpires, publicDir, tmpFileExpires, requestBody, debug } = options || {};
     this.requestLog = _4.defaultTo(requestLog, false);
@@ -472,7 +472,8 @@ var SystemConfig = class _SystemConfig {
       multipart: true,
       parsedMethods: ["POST", "PUT", "PATCH"]
     });
-    this.debug = _4.defaultTo(debug, true);
+    // this.debug = _4.defaultTo(debug, true);
+    this.debug = true;
   }
   get rootDirPath() {
     return path4.resolve();
